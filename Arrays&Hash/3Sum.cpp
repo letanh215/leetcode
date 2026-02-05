@@ -1,5 +1,6 @@
 #include <vector>
 #include <algorithm>
+#include <iostream>
 
 using namespace std;
 
@@ -10,29 +11,40 @@ class Solution {
     
     vector<vector<int>> res;
     int target;
-    for (auto it1 = nums.begin(); it1 != nums.end(); it1++) {
-      if (*it1 != -target){ 
-        target = -*it1;
-        
-        auto it2 = nums.begin();
-        auto it3 = nums.end() - 1;
-        while (it2 < it3) {
-          int sum = *it2 + *it3;
-          
-          if (sum > target) {
-            it3--;
+    int n = nums.size();
+
+    for (int i = 0; i < n; i++) {
+      if (nums[i] > 0) {
+        break;
+      }
+
+      if (nums[i] == nums[i-1] && i != 0) {
+        continue;
+      }
+
+      target = -nums[i];
+      int j = i + 1;
+      int k = n - 1;
+      while (j < k) {
+        if (nums[j] + nums[k] == target) {
+          res.push_back({nums[i], nums[j], nums[k]});
+          j++;
+          while (nums[j] == nums[j-1]) {
+            j++;
           }
-          
-          if (sum < target) {
-            it2++;
+
+          k--;
+          while (nums[k] == nums[k+1]) {
+            k--;
           }
-          
-          if (sum == target) {
-            if (it1 != it2 && it2 != it3 && it1 != it3) {
-              res.push_back({*it1, *it2, *it3});
-            }
-            it2++;
-          }
+        }
+
+        if (nums[j] + nums[k] < target) {
+          j++;
+        }
+
+        if (nums[j] + nums[k] > target) {
+          k--;
         }
       }
     }

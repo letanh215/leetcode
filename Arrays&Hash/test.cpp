@@ -5,7 +5,9 @@
 // #include "LongestConsecutive.cpp"
 // #include "ValidPalindrome.cpp"
 // #include "TwoSum2.cpp"
-#include "3Sum.cpp"
+// #include "3Sum.cpp"
+// #include "MaxArea.cpp"
+#include "KFreq.cpp"
 #include <vector>
 #include <string>
 
@@ -46,11 +48,11 @@ int main() {
   // string s = "Was it a car or a cat I saw?";
   // cout << sol.isPalindrome(s);
 
-  vector<int> vect = {-1,0,1,2,-1,-4};
+  vector<int> vect = {3,3};
   // vector<int> res = sol.twoSum(vect, 5);
-  vector<vector<int>> res = sol.threeSum(vect);
-  for (auto ele : res) {
-    printVector<int>(ele);
-  }
+  // vector<vector<int>> res = sol.threeSum(vect);
+  // printf("%d \n", sol.maxArea(vect));
+  vector<int> res = sol.topKFrequent(vect, 1);
+  printVector(res);
   return 0;
 }
