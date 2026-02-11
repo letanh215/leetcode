@@ -1,50 +1,28 @@
 #include <vector>
+#include <iostream>
 
 using namespace std;
 
 class Solution {
   public:
   vector<int> spiralOrder(vector<vector<int>>& matrix) {
-    int t = 0;
-    int b = matrix.size() - 1;
-    int l = 0;
-    int r = matrix[0].size() - 1;
-    
-    int i = 0;
-    int j = 0;
-    
-    vector<int> res;
-    for (int inex = 0; inex < matrix.size() / 2; inex++) {
-      if (inex > 0) {
-        j++;
-      }
-      while (j < r) {
-        res.push_back(matrix[i][j]);
-        j++;
-      }
-      
-      while (i < b) {
-        res.push_back(matrix[i][j]);
-        i++;
-      }
-      
-      while (j > l) {
-        res.push_back(matrix[i][j]);
-        j--;
-      }
-      
-      while (i > t) {
-        res.push_back(matrix[i][j]);
-        i--;
-      }
 
-      t++;
-      b--;
-      l++;
-      r--;
-    }
-    if (matrix.size() % 2 == 1) {
-      res.push_back(matrix[matrix.size() / 2][matrix.size() / 2]);
+    vector<vector<int>> directions = {{0, 1}, {1, 0}, {0, -1}, {-1, 0}};
+    vector<size_t> steps = {matrix[0].size(), matrix.size() - 1}; // 3 , 2 -> 2, 2 -> 2, 1 -> 1, 1 -> 
+
+    int r = 0, c = -1, d = 0;
+
+    vector<int> res;
+
+    while (steps[d & 1] > 0) {
+
+      for (int i = 0; i < steps[d & 1]; i++) {
+        r += directions[d][0];
+        c += directions[d][1];
+        res.push_back(matrix[r][c]);
+      }
+      steps[d & 1]--;
+      d = (d + 1) % 4;
     }
     return res;
   }

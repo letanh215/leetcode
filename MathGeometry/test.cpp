@@ -3,7 +3,9 @@
 #include <algorithm>
 
 // #include "RotateImage.cpp"
-#include "SpiralMatrix.cpp"
+// #include "SpiralMatrix.cpp"
+// #include "SetMatrixZeroes.cpp"
+#include "NonCyclicalNumber.cpp"
 
 using namespace std;
 
@@ -28,18 +30,19 @@ int main() {
   Solution sol;
 
   vector<vector<int>> vect = {
-    {1, 2, 3},
-    {5, 6, 7},
-    {9, 10 ,11},
-    // {13, 14, 15, 16, 6, 3}
+    // {1,2,3},{5,0,7},{9,10,11}
+    {0, 1}, {1, 1}
   };
 
-  printMatrix(vect);
-  // reverse(vect.begin(), vect.end());
-  cout << endl;
-  // sol.rotate(vect);
-  vector<int> res = sol.spiralOrder(vect);
   // printMatrix(vect);
-  printVector(res);
+  // reverse(vect.begin(), vect.end());
+  // cout << endl;
+  // sol.rotate(vect);
+  // vector<int> res = sol.spiralOrder(vect);
+  // sol.setZeroes(vect);
+  // printMatrix(vect);
+  // printVector(res);
+  int n = 100;
+  cout << sol.isHappy(n) << endl;
   return 0;
 }
