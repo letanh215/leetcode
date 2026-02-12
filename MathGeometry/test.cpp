@@ -5,7 +5,9 @@
 // #include "RotateImage.cpp"
 // #include "SpiralMatrix.cpp"
 // #include "SetMatrixZeroes.cpp"
-#include "NonCyclicalNumber.cpp"
+// #include "NonCyclicalNumber.cpp"
+// #include "PlusOne.cpp"
+#include "PowXN.cpp"
 
 using namespace std;
 
@@ -42,7 +44,12 @@ int main() {
   // sol.setZeroes(vect);
   // printMatrix(vect);
   // printVector(res);
-  int n = 100;
-  cout << sol.isHappy(n) << endl;
+  // int n = 100;
+  // cout << sol.isHappy(n) << endl;
+
+  // vector<int> vect1 = {9, 9, 9};
+  // printVector(sol.plusOne(vect1));
+
+  cout << sol.myPow(1.10000, -3) << endl;
   return 0;
 }
