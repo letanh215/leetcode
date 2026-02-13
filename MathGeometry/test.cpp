@@ -7,7 +7,8 @@
 // #include "SetMatrixZeroes.cpp"
 // #include "NonCyclicalNumber.cpp"
 // #include "PlusOne.cpp"
-#include "PowXN.cpp"
+// #include "PowXN.cpp"
+#include "MultiplyStrings.cpp"
 
 using namespace std;
 
@@ -50,6 +51,7 @@ int main() {
   // vector<int> vect1 = {9, 9, 9};
   // printVector(sol.plusOne(vect1));
 
-  cout << sol.myPow(1.10000, -3) << endl;
+  // cout << sol.myPow(1.10000, -3) << endl;
+  cout << sol.multiply("563", "13") << endl;
   return 0;
 }
