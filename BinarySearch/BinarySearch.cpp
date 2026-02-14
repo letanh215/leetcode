@@ -8,7 +8,7 @@ class Solution {
     int l = 0, r = nums.size() - 1;
     while (l < r) {
       int index = l + (r - l) / 2;
-      printf("i: %3d, %3d%3d\n", nums[index], l, r);
+      // printf("i: %3d, %3d%3d\n", nums[index], l, r);
       if (target > nums[index]) {
         l = index + 1;
       } else if (target < nums[index]) {
