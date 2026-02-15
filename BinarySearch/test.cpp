@@ -28,7 +28,7 @@ void printVector(const vector<int> vect) {
 int main() {
   Solution sol;
 
-  vector<int> vect = {1, 4, 3, 2};
+  vector<int> vect = {312884470};
   // cout << sol.search(vect, 1) << endl;
   // cout << 5  2 << endl;
 
@@ -37,6 +37,6 @@ int main() {
   };
 
   // cout << sol.searchMatrix(matrix, 11) << endl;
-  cout << sol.minEatingSpeed(vect, 9) << endl;
+  cout << sol.minEatingSpeed(vect, 968709470) << endl;
   return 0;
 }
