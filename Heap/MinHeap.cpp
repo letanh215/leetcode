@@ -6,7 +6,7 @@ using namespace std;
 
 class MinHeap {
   private:
-  vector<int> _heap;
+  vector<int> heap_;
   
   int _leftChild(int index) {
     return index * 2 + 1;
@@ -21,17 +21,17 @@ class MinHeap {
   }
   
   void _swap(int ind1, int ind2) {
-    int temp = _heap[ind1];
-    _heap[ind1] = _heap[ind2];
-    _heap[ind2] = temp;
+    int temp = heap_[ind1];
+    heap_[ind1] = heap_[ind2];
+    heap_[ind2] = temp;
   }
   
   public:
   void printHeap() {
     cout << "\n[";
-    for (size_t i = 0; i < _heap.size(); i++) {
-      cout << _heap[i];
-      if (i < _heap.size() - 1) { 
+    for (size_t i = 0; i < heap_.size(); i++) {
+      cout << heap_[i];
+      if (i < heap_.size() - 1) { 
         cout << ", ";
       }
     }
@@ -39,17 +39,17 @@ class MinHeap {
   }
   
   const vector<int>& getHeap() const {
-    return _heap;
+    return heap_;
   }
   
   void insert(int value) {
-    _heap.push_back(value);
+    heap_.push_back(value);
     
-    int i = _heap.size() - 1;
+    int i = heap_.size() - 1;
     int p_i = _parent(i);
     if (i < 0) return;
     
-    while (i > 0 && _heap.at(i) < _heap.at(p_i)) {
+    while (i > 0 && heap_.at(i) < heap_.at(p_i)) {
       _swap(i, p_i);
       i = p_i;
       p_i = _parent(i);
@@ -57,17 +57,17 @@ class MinHeap {
   }
   
   void sinkDown(int index) {
-    if (_heap.size() == 1) {
+    if (heap_.size() == 1) {
       return;
     }
 
     int i = 0;
     int min_index;
-    int min_value = _heap[i];
+    int min_value = heap_[i];
     while (true) {
-      min_value = min(_heap[_leftChild(i)], _heap[_rightChild(i)]);
-      min_index = (min_value == _heap[_leftChild(i)]) ? _leftChild(i) : _rightChild(i);
-      if (min_index < _heap.size() && min_index != index) {
+      min_value = min(heap_[_leftChild(i)], heap_[_rightChild(i)]);
+      min_index = (min_value == heap_[_leftChild(i)]) ? _leftChild(i) : _rightChild(i);
+      if (min_index < heap_.size() && min_index != index) {
         _swap(min_index, i);
         i = min_index;
       } else {
@@ -78,17 +78,17 @@ class MinHeap {
 
   int remove() {
     
-    if (_heap.empty()) {
+    if (heap_.empty()) {
       return INT_MIN;
     }
     
-    int res = _heap.front();
+    int res = heap_.front();
     
-    if (_heap.size() == 1) {
-      _heap.pop_back();
+    if (heap_.size() == 1) {
+      heap_.pop_back();
     } else {
-      _heap[0]= _heap.back();
-      _heap.pop_back();
+      heap_[0]= heap_.back();
+      heap_.pop_back();
       sinkDown(0);     
     }
     

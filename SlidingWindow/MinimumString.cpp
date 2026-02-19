@@ -10,51 +10,47 @@ class Solution {
       return "";
     }
     unordered_map<char, int> map_t, map_s;
-
+    
     for (int i = 0; i < t.length(); i++) {
       map_t[t[i]]++;
     }
-
+    
     int have = 0;
-    int l = 0, r = 0;
+    int l = 0;
     int i1, i2;
     int length = s.length();
+    int need = map_t.size();
+    
+    for (int r = 0; r < s.length(); r++) {
+      map_s[s[r]]++;
+      if (map_t.count(s[r]) && map_s[s[r]] == map_t[s[r]]) {
+        have++;
+      }
 
-    while (l < s.length()) {
-      while (have != map_t.size() && r < s.length()) {
-        // printf("%c %d %d\n", s[r], r, have);
-        if (map_t.count(s[r]) != 0) {
-          map_s[s[r]]++;
-          // printf("%d\n", map_s[s[r]] == map_t[s[r]]);
-          if (map_s[s[r]] == map_t[s[r]]){
-            have++;
-          }
+      // printf("r: %d, %c\n", r, s[r]);
+      while (have == need) {
+        if (length > (r - l)) {
+          length = r - l; 
+          i1 = l;
+          i2 = r;
         }
-        r++;
-      }
-
-      if (length > (r - l) && have == map_t.size()) {
-        printf("CPoint: l: %d r: %d\n", l, r);
-        length = r - l;
-        i1 = l;
-        i2 = r;
-      }
-
-      if (map_s.count(s[l]) != 0) {
         map_s[s[l]]--;
-        have--;
+        if (map_t.count(s[l]) != 0 && map_s[s[l]] < map_t[s[l]]) {
+          have--;
+        }
+        l++;
       }
-
-      l++;
     }
 
     if (length == s.length()) {
       return "";
     }
+    
     string res;
-    for (int i = i1; i < i2; i++) {
+    for (int i = i1; i <= i2; i++) {
       res += s[i];
     }
+    
     return res;
   }
 };
