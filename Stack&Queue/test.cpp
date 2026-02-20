@@ -3,7 +3,12 @@
 #include "SortStack.h"
 #include "QueueUsingTwoStacks.cpp"
 
+#include "ValidParentheses.cpp"
+
 #include <iostream>
+#include <stack>
+#include <vector>
+#include <string>
 
 using namespace std;
 int main() {
@@ -26,17 +31,33 @@ int main() {
   // cout << isBalancedParentheses(s) << endl; 
   // cout << reverseString(s) << endl;;
 
-  QueueUsingTwoStacks q;
+  // QueueUsingTwoStacks q;
 
-  q.enqueue(1);
-  q.enqueue(2);
+  // q.enqueue(1);
+  // q.enqueue(2);
 
-  q.dequeue();
-  q.enqueue(3);
-  q.enqueue(4);
+  // q.dequeue();
+  // q.enqueue(3);
+  // q.enqueue(4);
 
-  cout << q.front() << endl;
-  q.dequeue();
-  cout << q.front() << endl;
+  // cout << q.front() << endl;
+  // q.dequeue();
+  // cout << q.front() << endl;
+
+  stack<int> q;
+  for (int i = 0; i < 5; i++) {
+    q.push(i);
+  }
+
+  while (!q.empty()) {
+    cout << q.top() << endl;
+    q.pop();
+  }
+
+  Solution sol;
+  // string s = "([{}])";
+  vector<string> vect = {"4","13","5","/","+"};
+  cout << 4 | 13 << endl;
+  // cout << sol.isValid(s) << endl;
   return 0;
 }
