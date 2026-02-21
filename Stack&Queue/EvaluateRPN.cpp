@@ -7,46 +7,32 @@ using namespace std;
 class Solution {
   public:
   int evalRPN(vector<string>& tokens) {
-    stack<string> numbers;
-    stack<string> operators;
-
-    for (int i = tokens.size() - 1; i >= 0; i--) {
-      if (tokens[i] == "+" || tokens[i] == "-" || tokens[i] == "*"
-          || tokens[i] == "/") {
-        operators.push(tokens[i]);   
-      } else {
-        numbers.push(tokens[i]);
-      }
-    }
-
-    if (numbers.size() != operators.size() + 1) {
-      return -1;
-    }
-
-    int res = stoi(numbers.top());
-    numbers.pop();
-
-    while (!numbers.empty()) {
-      string op = operators.top();
-      int n = stoi(numbers.top());
-      if (op == "+") {
-        res += n;
-      } else if (op == "-") {
-        res -= n;
-      } else if (op == "*") {
-        res *= n;
-      } else {
-        int d = res % n;
-        res /= n;
-        if (d > 0) {
-          res += 1;
+    stack<int> numbers;
+    
+    for (int i = 0; i < tokens.size(); i++) {
+      if (tokens[i] == "+" || tokens[i] == "-" || tokens[i] == "*" ||
+        tokens[i] == "/") {
+          
+          int n2 = numbers.top();
+          numbers.pop();
+          int n1 = numbers.top();
+          numbers.pop();
+          
+          if (tokens[i] == "+") {
+            numbers.push(n1 + n2);
+          } else if (tokens[i] == "-") {
+            numbers.push(n1 - n2);
+          } else if (tokens[i] == "*") {
+            numbers.push(n1 * n2);
+          } else if (tokens[i] == "/") {
+            numbers.push(n1 / n2);
+          }
+        } else {
+          numbers.push(stoi(tokens[i]));
         }
       }
-
-      operators.pop();
-      numbers.pop();
+      
+      return numbers.top();
     }
-
-    return res;
-  }
-};
+  };
+  

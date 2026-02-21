@@ -3,7 +3,8 @@
 #include "SortStack.h"
 #include "QueueUsingTwoStacks.cpp"
 
-#include "ValidParentheses.cpp"
+// #include "ValidParentheses.cpp"
+#include "EvaluateRPN.cpp"
 
 #include <iostream>
 #include <stack>
@@ -44,20 +45,10 @@ int main() {
   // q.dequeue();
   // cout << q.front() << endl;
 
-  stack<int> q;
-  for (int i = 0; i < 5; i++) {
-    q.push(i);
-  }
-
-  while (!q.empty()) {
-    cout << q.top() << endl;
-    q.pop();
-  }
-
   Solution sol;
   // string s = "([{}])";
   vector<string> vect = {"4","13","5","/","+"};
-  cout << 4 | 13 << endl;
+  cout << sol.evalRPN(vect) << endl;
   // cout << sol.isValid(s) << endl;
   return 0;
 }
