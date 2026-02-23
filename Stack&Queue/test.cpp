@@ -4,7 +4,8 @@
 #include "QueueUsingTwoStacks.cpp"
 
 // #include "ValidParentheses.cpp"
-#include "EvaluateRPN.cpp"
+// #include "EvaluateRPN.cpp"
+#include "CarFleet.cpp"
 
 #include <iostream>
 #include <stack>
@@ -46,9 +47,14 @@ int main() {
   // cout << q.front() << endl;
 
   Solution sol;
-  // string s = "([{}])";
-  vector<string> vect = {"4","13","5","/","+"};
-  cout << sol.evalRPN(vect) << endl;
+  // string s = "({{}{)";
+  // vector<string> vect = {"4","13","5","/","+"};
+  // cout << sol.evalRPN(vect) << endl;
   // cout << sol.isValid(s) << endl;
+
+  vector<int> pos = {8,3,7,4,6,5};
+  vector<int> velo = {4,4,4,4,4,4};
+
+  cout << sol.carFleet(10, pos, velo) << endl;
   return 0;
 }
