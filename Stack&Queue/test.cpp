@@ -5,7 +5,8 @@
 
 // #include "ValidParentheses.cpp"
 // #include "EvaluateRPN.cpp"
-#include "CarFleet.cpp"
+// #include "CarFleet.cpp"
+#include "HistogramRectangle.cpp"
 
 #include <iostream>
 #include <stack>
@@ -52,9 +53,12 @@ int main() {
   // cout << sol.evalRPN(vect) << endl;
   // cout << sol.isValid(s) << endl;
 
-  vector<int> pos = {8,3,7,4,6,5};
-  vector<int> velo = {4,4,4,4,4,4};
+  // vector<int> pos = {8,3,7,4,6,5};
+  // vector<int> velo = {4,4,4,4,4,4};
 
-  cout << sol.carFleet(10, pos, velo) << endl;
+  // cout << sol.carFleet(10, pos, velo) << endl;
+
+  vector<int> histogram = {7,1,7,2,2,4};
+  cout << sol.largestRectangleArea(histogram) << endl;
   return 0;
 }
